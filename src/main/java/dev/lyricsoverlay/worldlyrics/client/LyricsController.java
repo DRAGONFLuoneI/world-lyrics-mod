@@ -566,7 +566,7 @@ public final class LyricsController {
             case NO_APP -> {
                 if (prev == BridgeClient.Status.OK || prev == BridgeClient.Status.CONNECTING || prev == null) {
                     toast(Lang.t("Нет связи с Lyrics Overlay — запустите программу (порт ", "No connection to Lyrics Overlay — start the app (port ")
-                            + Config.PORT.get() + ")");
+                            + BridgeClient.INSTANCE.port() + ")");
                 }
             }
             case ERROR -> toast(Lang.t("Ошибка связи: ", "Bridge error: ") + br.error());

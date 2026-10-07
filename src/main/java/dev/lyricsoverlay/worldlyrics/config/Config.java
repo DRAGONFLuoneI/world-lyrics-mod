@@ -332,8 +332,8 @@ public final class Config {
         HOST = string("host", "127.0.0.1", "Адрес Lyrics Overlay", "Lyrics Overlay host",
                 "Обычно 127.0.0.1 — программа на этом же компьютере.", "Usually 127.0.0.1 — the app on this PC.");
         PORT = integer("port", 47811, 1024, 65535, 1, "", "", "Порт", "Port",
-                "Должен совпадать с портом в Lyrics Overlay → Приложение → Интеграции.",
-                "Must match Lyrics Overlay → App → Integrations.");
+                "Обычно не нужно трогать: если порт занят, программа берёт другой, и мод находит его сам.",
+                "Usually leave as is: if busy, the app picks another port and the mod finds it automatically.");
         POLL_MS = integer("pollMs", 250, 100, 2000, 50, " мс", " ms", "Частота опроса", "Poll interval",
                 "Как часто спрашивать программу о треке. Время между опросами мод досчитывает сам.",
                 "How often to ask the app. The mod interpolates time in between.");

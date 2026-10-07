@@ -439,7 +439,7 @@ public final class SettingsScreen extends Screen {
                     ? "● " + s.title() + (s.artist().isEmpty() ? "" : " — " + s.artist())
                     : Lang.t("● Подключено · ничего не играет", "● Connected · nothing playing");
             case NO_APP -> Lang.t("○ Нет связи с Lyrics Overlay (порт ", "○ No connection to Lyrics Overlay (port ")
-                    + Config.PORT.get() + ")";
+                    + BridgeClient.INSTANCE.port() + ")";
             case ERROR -> "○ " + br.error();
             case DISABLED -> Lang.t("○ Мод выключен (клавиша ", "○ Mod disabled (key ")
                     + Keybinds.TOGGLE.getTranslatedKeyMessage().getString() + ")";

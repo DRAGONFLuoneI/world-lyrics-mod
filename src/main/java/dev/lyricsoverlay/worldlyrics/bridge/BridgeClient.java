@@ -15,6 +15,8 @@ import java.net.http.HttpConnectTimeoutException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +115,40 @@ public final class BridgeClient {
         if (host.isEmpty()) {
             host = "127.0.0.1";
         }
-        return "http://" + host + ":" + Config.PORT.get();
+        return "http://" + host + ":" + port();
+    }
+
+    private volatile long infoStamp = -1;
+    private volatile int infoPort = -1;
+
+    /**
+     * Фактический порт моста. Если Windows не дала программе порт из настроек, она берёт
+     * свободный и пишет его в %APPDATA%\LyricsOverlay\bridge.json — читаем оттуда.
+     */
+    public int port() {
+        String host = Config.HOST.get().trim();
+        boolean local = host.isEmpty() || host.equals("127.0.0.1") || host.equalsIgnoreCase("localhost");
+        if (local) {
+            try {
+                String appdata = System.getenv("APPDATA");
+                Path file = appdata != null ? Path.of(appdata, "LyricsOverlay", "bridge.json")
+                        : Path.of(System.getProperty("user.home"), ".config", "LyricsOverlay", "bridge.json");
+                if (Files.isRegularFile(file)) {
+                    long stamp = Files.getLastModifiedTime(file).toMillis();
+                    if (stamp != infoStamp) {
+                        JsonObject o = JsonParser.parseString(Files.readString(file, StandardCharsets.UTF_8)).getAsJsonObject();
+                        infoPort = intOf(o, "port", -1);
+                        infoStamp = stamp;
+                    }
+                    if (infoPort > 0) {
+                        return infoPort;
+                    }
+                }
+            } catch (Exception e) {
+                infoStamp = -1;
+            }
+        }
+        return Config.PORT.get();
     }
 
     private void loop() {
