@@ -1,0 +1,10 @@
+{
+  "key.categories.worldlyrics": "World Lyrics",
+  "key.worldlyrics.toggle": "Show / hide lyrics",
+  "key.worldlyrics.settings": "Lyrics settings",
+  "key.worldlyrics.offset_plus": "Lyrics earlier (+offset)",
+  "key.worldlyrics.offset_minus": "Lyrics later (−offset)",
+  "key.worldlyrics.anchor": "Anchor lyrics here",
+  "key.worldlyrics.mode": "Cycle lyrics mode",
+  "key.worldlyrics.reload": "Reload lyrics"
+}

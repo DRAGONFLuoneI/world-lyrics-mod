@@ -1,0 +1,10 @@
+{
+  "key.categories.worldlyrics": "World Lyrics",
+  "key.worldlyrics.toggle": "Показать / скрыть текст",
+  "key.worldlyrics.settings": "Настройки текста",
+  "key.worldlyrics.offset_plus": "Текст раньше (+сдвиг)",
+  "key.worldlyrics.offset_minus": "Текст позже (−сдвиг)",
+  "key.worldlyrics.anchor": "Закрепить текст здесь",
+  "key.worldlyrics.mode": "Сменить режим текста",
+  "key.worldlyrics.reload": "Перезагрузить текст"
+}

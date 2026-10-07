@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''Тексты играющих песен прямо в мире: караоке, анимации, частицы и эффекты.
+Lyrics of the playing song right in the world: karaoke, animations, particles and effects.
+Трек и текст берутся из программы Lyrics Overlay (мост на 127.0.0.1).'''
+# Только клиент: мод не нужен на сервере и не мешает заходить на любые серверы
+displayTest="IGNORE_ALL_VERSION"
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="CLIENT"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="CLIENT"
